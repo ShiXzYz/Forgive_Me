@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Runaway Button</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Screen 1 -->
+  <div id="screen1" class="screen active">
+    <div class="cat_background">
+    <div class="cat-box"></div>
+    <p class="cat_text">Will you forgive me?</p>
+    <button onclick="switchScreen('screen2')" id="yes-btn">Yes</button>
+    </div>
+    <button id="runaway-btn">No</button>
+  </div>
+<!-- Screen 2 -->
+<div id="screen2" class="screen">
+  <div class="cat_background">
+    <div class="cat-happy"></div>
+    <p class="cat_happy_text">I knew you would forgive me! 💗</p>
+  </div>
+<script>
+function switchScreen(screenId) {
+  // Hide all screens
+  document.querySelectorAll('.screen').forEach(screen => {
+    screen.classList.remove('active');
+  });
+  // Show the selected screen
+  document.getElementById(screenId).classList.add('active');
+}
+
+const btn = document.getElementById('runaway-btn');
+
+document.addEventListener('mousemove', (e) => {
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+  const rect = btn.getBoundingClientRect();
+  const btnX = rect.left + rect.width / 2;
+  const btnY = rect.top + rect.height / 2;
+
+  const distance = Math.hypot(mouseX - btnX, mouseY - btnY);
+
+  if (distance < 100) { // If the mouse is too close
+    let newX = rect.left + (rect.left - mouseX) * 0.5;
+    let newY = rect.top + (rect.top - mouseY) * 0.5;
+
+    btn.style.left = newX + 'px';
+    btn.style.top = newY + 'px';
+  }
+});
+</script>
+</body>
+</html>

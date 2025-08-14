@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8aed2;
+    overflow: hidden;
+  }
+  .cat-box {
+    width: 200px;
+    height: 200px;
+    background-image: url('https://rlv.zcache.com/sad_cat_on_phone_square_sticker-r104af52b999e47929e0f2ab5625fe85e_zg2qgs_644.webp?rlvnet=1');
+    background-size: cover;
+    background-position: center;
+  }
+  .cat-happy {
+    width: 200px;
+    height: 200px;
+    background-image: url('https://64.media.tumblr.com/beff886ca514bad3dfae05e1ffed4cbb/febcdadf6f9f83ec-a9/s540x810/c2fb5723d7e94675606e851660948aef3da40042.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .cat_happy_text {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ff389b;
+    text-align: center;
+  }
+  .cat_background {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 50px auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: #b8457d;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 15px;
+  }
+  .cat_text {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ff389b;
+    text-align: center;
+  }
+  #yes-btn {
+    position: relative;
+    padding: 15px 30px;
+    background-color: #f49ac5;
+    color: #b8457d;
+    font-weight: bold;
+    border: #b8457d;
+    border-style: solid;
+    border-width: 3px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 15px;
+    left: -70px;
+  }
+  #runaway-btn {
+    position: absolute;
+    left: 785px;
+    top: 463px;
+    padding: 15px 30px;
+    background-color: #f49ac5;
+    color: #b8457d;
+    font-weight: bold;
+    border: #b8457d;
+    border-style: solid;
+    border-width: 3px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 15px;
+    transition: transform 0.1s ease;
+  }
+  .screen {
+    display:none;
+    width: 80vw;
+    height: 80vh;
+  }
+  .screen.active {
+    display: block;
+  }
