@@ -14,7 +14,7 @@
     <p class="cat_text">Will you forgive me?</p>
     <div class="button-container">
       <button id="yes-btn" onclick="switchScreen('screen2')">Yes</button>
-      <button id="runaway-btn">No</button>
+      <button id="runaway-btn" onclick="movebutton()">No</button>
     </div>
     </div>
   </div>
@@ -25,6 +25,29 @@
     <p class="cat_happy_text">I knew you would forgive me! 💗</p>
   </div>
 <script>
+function movebutton(){
+   const button = document.getElementById('runaway-btn');
+    const container = button.parentElement; // or document.body for full screen
+
+    // Set button to absolute if not already
+    button.style.position = 'absolute';
+
+    // Get container dimensions
+    const zoneWidth = 500;  // width of teleport area
+    const zoneHeight = 500; // height of teleport area
+
+    // Calculate random position (keeping button inside container)
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+
+    const randomX = centerX - zoneWidth / 2 + Math.random() * zoneWidth;
+    const randomY = centerY - zoneHeight / 2 + Math.random() * zoneHeight;
+
+    // Move the button
+    button.style.left = `${randomX}px`;
+    button.style.top = `${randomY}px`;
+}
+
 function switchScreen(screenId) {
   // Hide all screens
   document.querySelectorAll('.screen').forEach(screen => {
