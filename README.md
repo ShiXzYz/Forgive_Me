@@ -1,11 +1,11 @@
 # Forgive_Me
 A funny project request from my friend
 
+----------
+
 ## How to Open
-On the right of the Forgive_Me repository, there is an About page. 
-
-This is the link to the website that should be provided: shixzyz.github.io/Forgive_Me/
-
-To actually check out the site, please find it linked in the About page.
+1. On the right of the Forgive_Me repository, there is an About page.
+2. This is the link to the website that should be provided: shixzyz.github.io/Forgive_Me/
+3. To actually check out the site, please click it and enjoy~
 
 Have fun!
