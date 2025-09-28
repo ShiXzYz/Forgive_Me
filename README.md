@@ -12,3 +12,6 @@ Inspiration from: https://www.instagram.com/reel/DMuVALJzups/?igsh=a3Vlb20weG5uZ
 3. To actually check out the site, please click it and enjoy~
 
 Have fun!
+
+## Future Plan?
+1. Add a different mode/scene where it is a different question.
