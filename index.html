@@ -6,6 +6,7 @@
 <title>Forgive Me?</title>
 <link rel="stylesheet" href="style.css">
 </head>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <body>
   <!-- Mode Switch Buttons -->
   <button id="mode-btn" onclick="toggleMode()">🎓 Internship Mode</button>
@@ -54,7 +55,13 @@ function switchScreen(screenId) {
     screen.classList.remove('active');
   });
   document.getElementById(screenId).classList.add('active');
+
+  // This should trigger a confetti when yes (goes to screen2)
+  if (screenId === 'screen2') {
+    fireConfetti();
+  }
 }
+
 
 document.addEventListener('mousemove', (e) => {
   const btn = document.getElementById('runaway-btn');
@@ -70,6 +77,33 @@ document.addEventListener('mousemove', (e) => {
     btn.style.top = newY + 'px';
   }
 });
+
+function fireConfetti() {
+  const duration = 1 * 1000; // 2 seconds
+  const end = Date.now() + duration;
+
+  (function frame() {
+    // Random confetti bursts from both sides
+    confetti({
+      particleCount: 5,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: ['#bb0000', '#ffffff', '#ff69b4', '#4f8cff']
+    });
+    confetti({
+      particleCount: 5,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: ['#bb0000', '#ffffff', '#ff69b4', '#4f8cff']
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+}
 
 function toggleMode() {
   isInternshipMode = !isInternshipMode;
