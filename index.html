@@ -24,7 +24,7 @@
 
   <!-- Screen 2 -->
   <div id="screen2" class="screen">
-    <div class="cat_background">
+    <div class="cat_background" id="happy-container">
       <div class="cat-happy" id="happy-image"></div>
       <p class="cat_happy_text" id="happy-text">I knew you would forgive me! 💗</p>
     </div>
@@ -32,7 +32,6 @@
 
 <script>
 let isInternshipMode = false;
-let currentMode = 'cat';
 
 function movebutton() {
   const button = document.getElementById('runaway-btn');
@@ -64,10 +63,9 @@ document.addEventListener('mousemove', (e) => {
   const btnY = rect.top + rect.height / 2;
   const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
 
-  if (distance < 100) { // restored original fast behavior
+  if (distance < 100) { // fast runaway behavior
     let newX = rect.left + (rect.left - e.clientX) * 0.5;
     let newY = rect.top + (rect.top - e.clientY) * 0.5;
-
     btn.style.left = newX + 'px';
     btn.style.top = newY + 'px';
   }
@@ -75,30 +73,78 @@ document.addEventListener('mousemove', (e) => {
 
 function toggleMode() {
   isInternshipMode = !isInternshipMode;
+
   const body = document.body;
   const text = document.getElementById('main-text');
   const image = document.getElementById('main-image');
   const happyImage = document.getElementById('happy-image');
   const happyText = document.getElementById('happy-text');
   const modeBtn = document.getElementById('mode-btn');
+  const mainContainer = document.getElementById('main-container');
+  const happyContainer = document.getElementById('happy-container');
+  const yesBtn = document.getElementById('yes-btn');
+  const noBtn = document.getElementById('runaway-btn');
 
   if (isInternshipMode) {
-    // Change visuals
+    // 🎓 Internship Mode Theme
+    document.body.classList.add("internship-mode");
     body.style.background = "#eaf2ff";
+    mainContainer.style.backgroundColor = "#f4f8ff";
+    happyContainer.style.backgroundColor = "#f4f8ff";
+    mainContainer.style.borderColor = "#0066cc";
+    happyContainer.style.borderColor = "#0066cc";
+    text.style.color = "#004080";
     text.textContent = "Will you give me an internship?";
-    image.style.backgroundImage = "url('https://media.istockphoto.com/id/1444789694/vector/cute-office-cat.jpg?s=612x612&w=0&k=20&c=JmLqG06hCMRYlMcUzWwnL2Gegf3IK-RXqD8o6yXwwyk=')";
-    happyImage.style.backgroundImage = "url('https://cdn-icons-png.flaticon.com/512/6839/6839336.png')";
-    happyText.textContent = "Yay! I got the internship! 🎉";
+    image.style.backgroundImage = "url('https://i.imgflip.com/7in5fj.jpg')";
+    happyImage.style.backgroundImage = "url('https://i.pinimg.com/736x/5f/a8/72/5fa872bd8f3cb0870e1e0ec7e8f15dfc.jpg')";
+    happyText.textContent = "Yay! Thank you so much! 🎉";
+    happyText.style.color = "#004080";
     modeBtn.textContent = "😺 Cat Mode";
+
+    // Change button colors for internship theme
+    yesBtn.style.backgroundColor = "#a7ceff";
+    yesBtn.style.color = "#003366";
+    yesBtn.style.borderColor = "#003366";
+    noBtn.style.backgroundColor = "#a7ceff";
+    noBtn.style.color = "#003366";
+    noBtn.style.borderColor = "#003366";
+
   } else {
-    // Revert to Cat Mode
+    // 😺 Cat Mode Theme
+    document.body.classList.remove("internship-mode");
     body.style.background = "#f8aed2";
+    mainContainer.style.backgroundColor = "white";
+    happyContainer.style.backgroundColor = "white";
+    mainContainer.style.borderColor = "#b8457d";
+    happyContainer.style.borderColor = "#b8457d";
+    text.style.color = "#ff389b";
     text.textContent = "Will you forgive me?";
     image.style.backgroundImage = "url('https://rlv.zcache.com/sad_cat_on_phone_square_sticker-r104af52b999e47929e0f2ab5625fe85e_zg2qgs_644.webp?rlvnet=1')";
     happyImage.style.backgroundImage = "url('https://64.media.tumblr.com/beff886ca514bad3dfae05e1ffed4cbb/febcdadf6f9f83ec-a9/s540x810/c2fb5723d7e94675606e851660948aef3da40042.jpg')";
     happyText.textContent = "I knew you would forgive me! 💗";
+    happyText.style.color = "#ff389b";
     modeBtn.textContent = "🎓 Internship Mode";
+
+    // Revert buttons to pink cat theme
+    yesBtn.style.backgroundColor = "#f49ac5";
+    yesBtn.style.color = "#b8457d";
+    yesBtn.style.borderColor = "#b8457d";
+    noBtn.style.backgroundColor = "#f49ac5";
+    noBtn.style.color = "#b8457d";
+    noBtn.style.borderColor = "#b8457d";
   }
+
+  // Reset to main screen
+  document.querySelectorAll('.screen').forEach(screen => {
+    screen.classList.remove('active');
+  });
+  document.getElementById('screen1').classList.add('active');
+
+  // Reset runaway button position
+  const btn = document.getElementById('runaway-btn');
+  btn.style.left = '50%';
+  btn.style.top = 'auto';
+  btn.style.transform = 'translateX(20px)';
 }
 </script>
 </body>

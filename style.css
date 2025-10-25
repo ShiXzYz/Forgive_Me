@@ -14,15 +14,30 @@ body{
   position: fixed;
   top: 15px;
   right: 15px;
-  background-color: #ffb7d1;
-  color: #b8457d;
-  border: 2px solid #b8457d;
-  border-radius: 12px;
+  background-color: #a7ceff;   /* blue */
+  color: #003366;
+  border: 2px solid #003366;
   padding: 10px 20px;
+  border-radius: 10px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   z-index: 999;
+}
+
+#mode-btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.1s ease;
+}
+
+body.internship-mode #mode-btn {
+  background-color: #ffb6c1;   /* pink */
+  color: #b8457d;              /* dark magenta */
+  border: 2px solid #b8457d;
+}
+
+body.internship-mode #mode-btn:hover {
+  background-color: #ff91a4;
 }
 
 .cat-box, .cat-happy {
@@ -84,6 +99,10 @@ body{
   position: absolute;
   left: 50%;
   transform: translateX(20px);
+}
+
+#yes-btn:hover, #runaway-btn:hover {
+  transform: scale(1.05);
 }
 
 .screen {
