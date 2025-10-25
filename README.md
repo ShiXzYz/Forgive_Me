@@ -15,6 +15,5 @@ Have fun!
 
 ## Future Plan?
 1. Add a different mode/scene where it is a different question.
-   - Internship mode?
 
 ## Feedback:
