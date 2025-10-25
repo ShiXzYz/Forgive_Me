@@ -63,20 +63,24 @@ function switchScreen(screenId) {
 }
 
 
-document.addEventListener('mousemove', (e) => {
-  const btn = document.getElementById('runaway-btn');
-  const rect = btn.getBoundingClientRect();
-  const btnX = rect.left + rect.width / 2;
-  const btnY = rect.top + rect.height / 2;
-  const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
+['mousemove', 'touchmove'].forEach(eventType => {
+  document.addEventListener(eventType, (e) => {
+    const btn = document.getElementById('runaway-btn');
+    const touch = e.touches ? e.touches[0] : e;
+    const rect = btn.getBoundingClientRect();
+    const btnX = rect.left + rect.width / 2;
+    const btnY = rect.top + rect.height / 2;
+    const distance = Math.hypot(touch.clientX - btnX, touch.clientY - btnY);
 
-  if (distance < 100) { // fast runaway behavior
-    let newX = rect.left + (rect.left - e.clientX) * 0.5;
-    let newY = rect.top + (rect.top - e.clientY) * 0.5;
-    btn.style.left = newX + 'px';
-    btn.style.top = newY + 'px';
-  }
+    if (distance < 100) {
+      let newX = rect.left + (rect.left - touch.clientX) * 0.5;
+      let newY = rect.top + (rect.top - touch.clientY) * 0.5;
+      btn.style.left = newX + 'px';
+      btn.style.top = newY + 'px';
+    }
+  });
 });
+
 
 function fireConfetti() {
   const duration = 1 * 1000; // 2 seconds
