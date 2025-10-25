@@ -118,41 +118,46 @@ body.internship-mode #mode-btn:hover {
 @media (max-width: 600px) {
   body {
     flex-direction: column;
-    overflow: hidden;
+    overflow-y: auto; /* allow scrolling if needed */
   }
 
   .cat_background {
-    width: 90vw;
+    width: 85vw;
     height: auto;
-    min-height: 350px;
-    padding: 15px;
+    min-height: 320px;
+    padding: 12px;
+    margin: 20px auto;
   }
 
   .cat-box, .cat-happy {
     width: 60vw;
-    max-width: 180px;
     height: 60vw;
-    max-height: 180px;
+    max-width: 160px;
+    max-height: 160px;
   }
 
   .cat_text, .cat_happy_text {
-    font-size: 22px;
+    font-size: 20px;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* space between Yes/No buttons */
   }
 
   #yes-btn, #runaway-btn {
-    font-size: 16px;
-    padding: 12px 20px;
-    border-width: 2px;
-  }
-
-  #yes-btn {
-    left: -30px;
+    position: static;
+    transform: none;
+    width: 70%;
+    max-width: 200px;
   }
 
   #mode-btn {
     font-size: 14px;
-    padding: 8px 16px;
-    top: 10px;
-    right: 10px;
+    padding: 8px 14px;
+    top: 8px;
+    right: 8px;
   }
 }
